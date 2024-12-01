@@ -93,7 +93,7 @@ module.exports = {
       allSeptember.push(actualSale);      
     }
 
-    // MES DE SEPTIEMBRE
+    // MES DE AGOSTO
     const allDatesAugust = faker.date.betweens({ from: '2024-08-01', to: '2024-08-31', count: 5 })
 
     const totalAugust = [
