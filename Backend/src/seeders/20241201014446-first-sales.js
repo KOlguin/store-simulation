@@ -25,7 +25,6 @@ module.exports = {
     for (let index = 0; index < 5; index++) {
       let actualSale = {
         salesDate: allDatesNovember[index],
-        price: 0,
         customerID: faker.number.int({min: 1, max: 10}),
         salesDescription: descriptionNovember[index],
         total: totalNovember[index],
@@ -54,7 +53,6 @@ module.exports = {
     for (let index = 0; index < 5; index++) {
       let actualSale = {
         salesDate: allDatesOctober[index],
-        price: 0,
         customerID: faker.number.int({min: 1, max: 10}),
         salesDescription: descriptionOctober[index],
         total: totalOctober[index],
@@ -82,7 +80,6 @@ module.exports = {
     for (let index = 0; index < 5; index++) {
       let actualSale = {
         salesDate: allDatesSeptember[index],
-        price: 0,
         customerID: faker.number.int({min: 1, max: 10}),
         salesDescription: descriptionSeptember[index],
         total: totalSeptember[index],
@@ -111,7 +108,6 @@ module.exports = {
     for (let index = 0; index < 5; index++) {
       let actualSale = {
         salesDate: allDatesAugust[index],
-        price: 0,
         customerID: faker.number.int({min: 1, max: 10}),
         salesDescription: descriptionAugust[index],
         total: totalAugust[index],
@@ -140,7 +136,6 @@ module.exports = {
     for (let index = 0; index < 5; index++) {
       let actualSale = {
         salesDate: allDatesJuly[index],
-        price: 0,
         customerID: faker.number.int({min: 1, max: 10}),
         salesDescription: descriptionJuly[index],
         total: totalJuly[index],
@@ -169,7 +164,6 @@ module.exports = {
     for (let index = 0; index < 5; index++) {
       let actualSale = {
         salesDate: allDatesJune[index],
-        price: 0,
         customerID: faker.number.int({min: 1, max: 10}),
         salesDescription: descriptionJune[index],
         total: totalJune[index],

@@ -17,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Sales.init({
     salesDate: DataTypes.DATEONLY,
-    price: DataTypes.INTEGER,
     customerID: DataTypes.INTEGER,
     salesDescription: DataTypes.STRING,
     total: DataTypes.INTEGER
