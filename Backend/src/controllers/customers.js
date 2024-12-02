@@ -62,12 +62,6 @@ const updateCustomer = (req, res) => {
                     return res.status(404).json({message: 'Customer not found'})
                 }
 
-                // customer.name = customerUpdateName
-                // customer.lastName = customerUpdateLastName
-                // customer.address = customerUpdateAddress
-                // customer.phoneNumber = customerUpdatePhone
-
-                // return customer.save()
                 let newValues = {
                     name: customerUpdateName,
                     lastName: customerUpdateLastName,
