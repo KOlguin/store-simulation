@@ -16,19 +16,19 @@ module.exports = {
     */
     faker.seed(100);
 
-    const allSKU = faker.helpers.uniqueArray(faker.commerce.isbn, 20);
-    const allNames = faker.helpers.uniqueArray(faker.commerce.productName, 20);
+    const allSKU = faker.helpers.uniqueArray(faker.commerce.isbn, 5);
+    const allNames = faker.helpers.uniqueArray(faker.commerce.productName, 5);
     // const allPrices = faker.helpers.uniqueArray(faker.commerce.price({min: 20000, max: 5000000, dec: 0}), 20);
-    const allBrands = faker.helpers.uniqueArray(faker.company.name, 20);
-    const allDescriptions = faker.helpers.uniqueArray(faker.commerce.productDescription, 20);
+    const allBrands = faker.helpers.uniqueArray(faker.company.name, 5);
+    const allDescriptions = faker.helpers.uniqueArray(faker.commerce.productDescription, 5);
 
     const allPrices = []
-    for (let index = 0; index < 20; index++) {
+    for (let index = 0; index < 5; index++) {
       allPrices.push(faker.commerce.price({min: 10000, max: 1000000, dec: 0}))
     }
 
     const allProducts = [];
-    for (let index = 0; index < 10; index++) {
+    for (let index = 0; index < 5; index++) {
       let actualProduct = {
         SKU: allSKU[index],
         name: allNames[index],
