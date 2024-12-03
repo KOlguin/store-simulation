@@ -11,11 +11,11 @@ module.exports = {
     const allDatesNovember = faker.date.betweens({ from: '2024-11-01', to: '2024-11-30', count: 5 })
 
     const totalNovember = [
-      26136690, // 10 X (ID 1)
-      9928755, // 5 X (ID 9 y 10)
-      29215264, // 8 X (ID 7 y 4)
-      54476976, // 12 x ID 5
-      7214070 // ID 2 y 6
+      7818030, // 10 X (ID 1)
+      4650675, // 5 X (ID 2 y 3)
+      10519864, // 8 X (ID 2 y 4)
+      10332264, // 12 x ID 5
+      1642825 // ID 1 y 5
     ]
 
     const descriptionNovember = faker.helpers.uniqueArray(faker.lorem.paragraph, 5)
@@ -39,11 +39,11 @@ module.exports = {
     const allDatesOctober = faker.date.betweens({ from: '2024-10-01', to: '2024-10-31', count: 5 })
 
     const totalOctober = [
-      5181362, // (ID 1,2, 3, 4, 5, 6, 7, 8, 9 Y 10)
-      5408885, // 5 X (ID 2 Y 7)
-      12750773, // 7 X (ID 1, 5 Y 10)
-      938136, // 20 X ID 9 + ID 3
-      17543620 // 10 X (ID 4, 6 Y 8)
+      3273718, // (ID 1,2, 3, 4, 5)
+      6574915, // 5 X (ID 2 Y 4)
+      11499775, // 7 X (ID 1, 5)
+      315910, // ID 3
+      7007580 // 10 X (ID 4)
     ]
 
     const descriptionOctober = faker.helpers.uniqueArray(faker.lorem.paragraph, 5)
@@ -67,11 +67,11 @@ module.exports = {
     const allDatesSeptember = faker.date.betweens({ from: '2024-09-01', to: '2024-09-30', count: 5 })
 
     const totalSeptember = [
-      19007780, // 10 X (ID 1,2, 3 Y 9)
-      5471495, // 5 X (ID 8, 9 Y 10)
-      4994034, // 3 X (ID 5, 6 Y 7)
-      5453150, // 10 x ID 4
-      8909775 // 7 X (ID 2 y 10)
+      17119380, // 10 X (ID 1,2, 3)
+      8559690, // 5 X (ID 1, 2 y 3)
+      2583066, // 3 X (ID 5)
+      7007580, // 10 x ID 4
+      4299575 // 7 X (ID 2)
     ]
 
     const descriptionSeptember = faker.helpers.uniqueArray(faker.lorem.paragraph, 5)
@@ -94,11 +94,11 @@ module.exports = {
     const allDatesAugust = faker.date.betweens({ from: '2024-08-01', to: '2024-08-31', count: 5 })
 
     const totalAugust = [
-      19007780, // 10 X (ID 1,2, 3 Y 9)
-      17543620, // 10 X (ID 4, 6 Y 8)
-      4994034, // 3 X (ID 5, 6 Y 7)
-      29215264, // 8 X (ID 7 y 4)
-      17543620 // 10 X (ID 4, 6 Y 8)
+      17119380, // 10 X (ID 1,2, 3)
+      7007580, // 10 X (ID 4)
+      2583066, // 3 X (ID 5)
+      5606064, // 8 X (ID 4)
+      7007580 // 10 X (ID 4)
     ]
 
     const descriptionAugust = faker.helpers.uniqueArray(faker.lorem.paragraph, 5)
@@ -122,11 +122,11 @@ module.exports = {
     const allDatesJuly = faker.date.betweens({ from: '2024-07-01', to: '2024-07-31', count: 5 })
 
     const totalJuly = [
-      5181362, // (ID 1,2, 3, 4, 5, 6, 7, 8, 9 Y 10)
-      5408885, // 5 X (ID 2 Y 7)
-      12750773, // 7 X (ID 1, 5 Y 10)
-      938136, // 20 X ID 9 + ID 3
-      17543620 // 10 X (ID 4, 6 Y 8)
+      3273718, // (ID 1,2, 3, 4, 5)
+      4305110, // 5 X (ID 2)
+      11499775, // 7 X (ID 1, 5)
+      315910, // ID 3
+      7007580 // 10 X (ID 4)
     ]
 
     const descriptionJuly = faker.helpers.uniqueArray(faker.lorem.paragraph, 5)
@@ -150,11 +150,11 @@ module.exports = {
     const allDatesJune = faker.date.betweens({ from: '2024-06-01', to: '2024-06-30', count: 5 })
 
     const totalJune = [
-      26136690, // 10 X (ID 1)
-      5408885, // 5 X (ID 2 Y 7)
-      19007780, // 10 X (ID 1,2, 3 Y 9)
-      19007780, // 10 X (ID 1,2, 3 Y 9)
-      17543620 // 10 X (ID 4, 6 Y 8)
+      781803, // 10 X (ID 1)
+      3071125, // 5 X (ID 2)
+      17119380, // 10 X (ID 1,2, 3)
+      17119380, // 10 X (ID 1,2, 3)
+      7007580 // 10 X (ID 4)
     ]
 
     const descriptionJune = faker.helpers.uniqueArray(faker.lorem.paragraph, 5)
