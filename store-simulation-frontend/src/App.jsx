@@ -3,13 +3,14 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 
 import SaleChart from './charts/saleChart'
+import InventoryChart from './charts/inventoryChart'
 // import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div>
       {/* <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -33,7 +34,10 @@ function App() {
       <div>
         <SaleChart />
       </div>
-    </>
+      <div>
+        <InventoryChart />
+      </div>
+    </div>
   )
 }
 
