@@ -10,7 +10,6 @@ Chart.register(CategoryScale);
 function SaleChart() {
   const [chartData, setChartData] = useState({
     labels: sales.map((data) => {
-      console.log(typeof data.salesDate)
       return data.salesDate.getDate()+"/"+(data.salesDate.getMonth()+1);
     }), 
     datasets: [

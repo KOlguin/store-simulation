@@ -63,3 +63,5 @@ const inventory = [
         updateDate: new Date('2024-07-03')
     },
 ]
+
+export default inventory
