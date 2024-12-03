@@ -1,5 +1,6 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+import 'moment'
 
 function LineChart({ chartData }) {
   return (
@@ -21,6 +22,12 @@ function LineChart({ chartData }) {
               }
             },
             x: {
+              type: 'time',
+              time: {
+                displayFormats: {
+                  day: 'DD-MM'
+                }
+              },
               title: {
                 display: true,
                 text: 'Fecha de la Venta'
