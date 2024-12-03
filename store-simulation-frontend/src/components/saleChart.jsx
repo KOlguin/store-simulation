@@ -4,7 +4,7 @@ import { CategoryScale } from "chart.js";
 import { useState, useEffect } from "react";
 // import sales from "../utils/DummyData/dummySales";
 
-import LineChart from '../components/LineChart'
+import LineChart from './chartsBase/LineChart'
 
 Chart.register(CategoryScale);
 
