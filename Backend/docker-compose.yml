@@ -13,7 +13,6 @@ services:
       POSTGRES_DB: ${DB_NAME}
     networks:
       - app-network
-  
   api:
     container_name: "store-simulation-api"
     build:
@@ -34,9 +33,11 @@ services:
       - DB_HOST=Database
 
 
+
 networks:
   app-network:
     driver: bridge
 
 volumes:
   postgres_data:
+
