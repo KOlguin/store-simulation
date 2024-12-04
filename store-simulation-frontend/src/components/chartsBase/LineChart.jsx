@@ -9,33 +9,6 @@ function LineChart({ chartData, options, title }) {
       <Line
         data={chartData}
         options={options}
-        // options={{
-        //   plugins: {
-        //     legend: {
-        //       display: false
-        //     }
-        //   },
-        //   scales: {
-        //     y: {
-        //       title: {
-        //         display: true,
-        //         text: 'Total de la Venta ($)'
-        //       }
-        //     },
-        //     x: {
-        //       type: 'time',
-        //       time: {
-        //         displayFormats: {
-        //           day: 'DD-MM'
-        //         }
-        //       },
-        //       title: {
-        //         display: true,
-        //         text: 'Fecha de la Venta'
-        //       }
-        //     }
-        //   }
-        // }}
       />
     </div>
   );

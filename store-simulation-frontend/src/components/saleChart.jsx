@@ -8,42 +8,22 @@ import LineChart from './chartsBase/LineChart'
 
 Chart.register(CategoryScale);
 
-function SaleChart() {
-  const [sales, setSales] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchSales = async() => {
-      try {
-        await fetch(`${import.meta.env.VITE_BACKEND_URL}/sale`)
-        .then((response) => response.json())
-        .then((data) => {
-          setSales(data.sales)
-          setIsLoading(false)
-        })
-        .catch((err) => console.log(err.message))
-      } catch (error) {
-        console.log("Error al obtener las ventas", error)
-      }
-    }
-    fetchSales()
-  }, [])
-
+const buildSales = (sales) => {
   let allSales = {
-      labels: sales.map((data) => {
-        return moment(data.salesDate, 'YYYY-MM-DD')
-      }), 
-      datasets: [
-        {
-          label: "Total de la venta",
-          data: sales.map((data) => data.total),
-          fill: false,
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.1,
-        }
-      ]
-    }
-  
+    labels: sales.map((data) => {
+      return moment(data.salesDate, 'YYYY-MM-DD')
+    }), 
+    datasets: [
+      {
+        label: "Total de la venta",
+        data: sales.map((data) => data.total),
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1,
+      }
+    ]
+  }
+
   const options = {
     plugins: {
       legend: {
@@ -71,8 +51,34 @@ function SaleChart() {
       }
     }
   }
-  
+
   const chartTitle = "Resumen de las Ventas del 2do semestre de 2024"
+
+  return { allSales, options, chartTitle }
+}
+
+function SaleChart() {
+  const [sales, setSales] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchSales = async() => {
+      try {
+        await fetch(`${import.meta.env.VITE_BACKEND_URL}/sale`)
+        .then((response) => response.json())
+        .then((data) => {
+          setSales(data.sales)
+          setIsLoading(false)
+        })
+        .catch((err) => console.log(err.message))
+      } catch (error) {
+        console.log("Error al obtener las ventas", error)
+      }
+    }
+    fetchSales()
+  }, [])
+
+  const { allSales, options, chartTitle } = buildSales(sales)
 
   if (isLoading) {
     return <h2>Cargando las ventas</h2>

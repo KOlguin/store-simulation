@@ -6,6 +6,69 @@ import moment from 'moment';
 
 import getRandomColor from '../utils/chartsAux/inventoryChartColors';
 
+const GetProductsName = (products) => {
+  const names = []
+  products.forEach((product) => {
+    names.push(product.name)
+  })
+
+  return names
+}
+
+const BuildInventory = (inventory, productsNames) => {
+  let allInventory = []
+  for (let index = 1; index < productsNames.length + 1; index++) {
+    const color = getRandomColor()
+    const mapInventory = inventory.map((data) => {
+      if (data.productID == index) {
+        return {
+          x: moment(data.updateDate, 'YYYY-MM-DD'),
+          y: data.availableQuantity
+        }
+      }
+    }).filter(el => el !== undefined)
+
+    allInventory.push({
+      label: `${productsNames[index - 1]}`,
+      data: mapInventory,
+      backgroundColor: color,
+      borderColor: color,
+      showLine: true
+    })
+  }
+
+  const data = {
+    datasets: allInventory
+  }
+
+  const options = {
+    scales: {
+        x: {
+            type: 'time',
+            time: {
+              displayFormats: {
+                day: 'DD-MM'
+            }
+            },
+            title: {
+                display: true,
+                text: 'Fecha'
+            }
+        },
+        y: {
+            title: {
+                display: true,
+                text: 'Cantidad en Inventario'
+            }
+        }
+    }
+  }
+
+  const chartTitle = "Resumen del Inventario del 2do semestre de 2024"
+
+  return { data, options, chartTitle }
+}
+
 function InventoryChart() {
   const [products, setProducts] = useState([])
   const [inventory, setInventory] = useState([])
@@ -45,64 +108,13 @@ function InventoryChart() {
     fetchProducts()
   }, [])
 
-  const names = []
-  products.forEach((product) => {
-    names.push(product.name)
-  })
-
-  let allInventory = []
-  for (let index = 1; index < names.length + 1; index++) {
-    const color = getRandomColor()
-    const mapInventory = inventory.map((data) => {
-      if (data.productID == index) {
-        return {
-          x: moment(data.updateDate, 'YYYY-MM-DD'),
-          y: data.availableQuantity
-        }
-      }
-    }).filter(el => el !== undefined)
-
-    allInventory.push({
-      label: `${names[index - 1]}`,
-      data: mapInventory,
-      backgroundColor: color,
-      borderColor: color,
-      showLine: true
-    })
-  }
-
   if (isLoading) {
     return <h2>Cargando inventario</h2>
   }
+
+  const productsName = GetProductsName(products)
   
-  const data = {
-    datasets: allInventory
-  }
-
-  const options = {
-    scales: {
-        x: {
-            type: 'time',
-            time: {
-              displayFormats: {
-                day: 'DD-MM'
-            }
-            },
-            title: {
-                display: true,
-                text: 'Fecha'
-            }
-        },
-        y: {
-            title: {
-                display: true,
-                text: 'Cantidad en Inventario'
-            }
-        }
-    }
-  }
-
-  const chartTitle = "Resumen del Inventario del 2do semestre de 2024"
+  const { data, options, chartTitle } = BuildInventory(inventory, productsName)
 
   return(
     <div className="chart-container">
