@@ -12,6 +12,7 @@ Backend:
 
 Frontend:
 - Completar `.env` con `VITE_BACKEND_URL`, que corresponderá a la URL donde corre el backend
+- Correr en la terminal `npm install`
 - Correr en la terminal `npm run dev`
 - Abrir `localhost:5173`
 
