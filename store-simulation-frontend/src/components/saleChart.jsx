@@ -9,20 +9,6 @@ import LineChart from './chartsBase/LineChart'
 Chart.register(CategoryScale);
 
 function SaleChart() {
-  // const [chartData, setChartData] = useState({
-  //   labels: sales.map((data) => {
-  //     return data.salesDate.getDate()+"/"+(data.salesDate.getMonth()+1);
-  //   }), 
-  //   datasets: [
-  //     {
-  //       label: "Total de la venta",
-  //       data: sales.map((data) => data.total),
-  //       fill: false,
-  //       borderColor: 'rgb(75, 192, 192)',
-  //       tension: 0.1,
-  //     }
-  //   ]
-  // });
   const [sales, setSales] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -45,7 +31,6 @@ function SaleChart() {
 
   let allSales = {
       labels: sales.map((data) => {
-        // return data.salesDate.getDate()+"/"+(data.salesDate.getMonth()+1);
         return moment(data.salesDate, 'YYYY-MM-DD')
       }), 
       datasets: [
@@ -59,13 +44,42 @@ function SaleChart() {
       ]
     }
   
+  const options = {
+    plugins: {
+      legend: {
+        display: false,
+      }
+    },
+    scales: {
+      y: {
+        title: {
+          display: true,
+          text: 'Total de la Venta ($)'
+        }
+      },
+      x: {
+        type: 'time',
+        time: {
+          displayFormats: {
+            day: 'DD-MM'
+          }
+        },
+        title: {
+          display: true,
+          text: 'Fecha de la Venta'
+        }
+      }
+    }
+  }
+  
+  const chartTitle = "Resumen de las Ventas del 2do semestre de 2024"
 
   if (isLoading) {
     return <h2>Cargando las ventas</h2>
   }
 
   return(
-    <LineChart chartData={allSales} />
+    <LineChart chartData={allSales} options={options} title={chartTitle} />
   )
 
 }
