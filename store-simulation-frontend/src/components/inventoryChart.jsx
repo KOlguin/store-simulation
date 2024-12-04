@@ -1,30 +1,15 @@
 import 'chartjs-adapter-moment';
 import { useState, useEffect } from "react";
-// import inventory from "../utils/DummyData/dummyInventopry";
 
 import { Scatter } from "react-chartjs-2";
 import moment from 'moment';
 
-function InventoryChart() {
-  // // const [products, setProducts] = useState([])
-  const [inventory, setInventory] = useState([])
-  const [isLoading, setIsLoadnig] = useState(true)
+import getRandomColor from '../utils/chartsAux/inventoryChartColors';
 
-  // useEffect(() => {
-  //   const fetchProducts = async() => {
-  //     try {
-  //       await fetch(`${process.env.VITE_BACKEND_URL}/product/getProducts`)
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         setProducts(data)
-  //       })
-  //       .catch((err) => console.log(err.message))
-  //     } catch (error) {
-  //       console.log("Error al obtener los productos")
-  //     }
-  //   }
-  //   fetchProducts
-  // }, [])
+function InventoryChart() {
+  const [products, setProducts] = useState([])
+  const [inventory, setInventory] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const fetchInventory = async() => {
@@ -33,7 +18,7 @@ function InventoryChart() {
         .then((response) => response.json())
         .then((data) => {
           setInventory(data.inventory)
-          setIsLoadnig(false)
+          setIsLoading(false)
         })
         .catch((err) => console.log(err.message))
       } catch (error) {
@@ -43,12 +28,32 @@ function InventoryChart() {
     fetchInventory()
   }, [])
 
-  
+  useEffect(() => {
+    const fetchProducts = async() => {
+      try {
+        await fetch(`${import.meta.env.VITE_BACKEND_URL}/product`)
+        .then((response) => response.json())
+        .then((data) => {
+          setProducts(data.products)
+          setIsLoading(false)
+        })
+        .catch((err) => console.log(err.message))
+      } catch (error) {
+        console.log("Error al obtener los productos", error)
+      }
+    }
+    fetchProducts()
+  }, [])
+
+  const names = []
+  products.forEach((product) => {
+    names.push(product.name)
+  })
 
   let allInventory = []
-  for (let index = 1; index < 6; index++) {
+  for (let index = 1; index < names.length + 1; index++) {
+    const color = getRandomColor()
     const mapInventory = inventory.map((data) => {
-      // console.log(data)
       if (data.productID == index) {
         return {
           x: moment(data.updateDate, 'YYYY-MM-DD'),
@@ -58,82 +63,53 @@ function InventoryChart() {
     }).filter(el => el !== undefined)
 
     allInventory.push({
-      label: `Producto ${index}`,
+      label: `${names[index - 1]}`,
       data: mapInventory,
-      backgroundColor: `rgba(75, 192, ${index}, 1)`,
+      backgroundColor: color,
+      borderColor: color,
       showLine: true
     })
   }
 
-  // console.log(allInventory)
-
-  // if (allInventory.length > 0) {
-  //   setIsLoadnig(false)
-  // }
-
   if (isLoading) {
-    return <h1>Cargando inventario</h1>
+    return <h2>Cargando inventario</h2>
   }
-  // const data = {
-  //   datasets: [
-  //     {
-  //       label: 'Scatter Dataset',
-  //       data: inventory.map((data) => {
-  //         if (data.productID == 1) {
-  //           return {
-  //             x: moment(data.updateDate, 'DD-MM-YYYY'),
-  //             y: data.availableQuantity
-  //           }
-  //         }
-  //       }).filter(el => el !== undefined),
-  //       backgroundColor: 'rgba(75,192,192,1)',
-  //       showLine: true
-  //     },
-  //     {
-  //       label: 'Scatter Dataset 2',
-  //       data: inventory.map((data) => {
-  //         if (data.productID == 2) {
-  //           return {
-  //             x: moment(data.updateDate, 'DD-MM-YYYY'),
-  //             y: data.availableQuantity
-  //           }
-  //         }
-  //       }).filter(el => el !== undefined),
-  //       backgroundColor: 'rgba(75,192,0,1)',
-  //       showLine: true
-  //     }
-  //   ],
-  // };
+  
   const data = {
     datasets: allInventory
   }
-  
-  console.log(allInventory)
-  
+
   const options = {
-      scales: {
-          x: {
-              type: 'time',
-              time: {
-                displayFormats: {
-                  day: 'DD-MM'
-              }
-              },
-              title: {
-                  display: true,
-                  text: 'Fecha'
-              }
-          },
-          y: {
-              title: {
-                  display: true,
-                  text: 'Cantidad en Inventario'
-              }
-          }
-      }
+    scales: {
+        x: {
+            type: 'time',
+            time: {
+              displayFormats: {
+                day: 'DD-MM'
+            }
+            },
+            title: {
+                display: true,
+                text: 'Fecha'
+            }
+        },
+        y: {
+            title: {
+                display: true,
+                text: 'Cantidad en Inventario'
+            }
+        }
+    }
   }
 
-  return <Scatter data={data} options={options} />;
+  const chartTitle = "Resumen del Inventario del 2do semestre de 2024"
+
+  return(
+    <div className="chart-container">
+      <h2 style={{ textAlign: "center" }}>{chartTitle}</h2>
+      <Scatter data={data} options={options} />
+    </div>
+  )
 }
 
 export default InventoryChart;
