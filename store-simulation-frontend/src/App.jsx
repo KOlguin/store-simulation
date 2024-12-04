@@ -1,4 +1,4 @@
-import SaleChart from './components/SaleChart'
+import SaleChart from './components/saleChart'
 import InventoryChart from './components/inventoryChart'
 import './App.css'
 
@@ -7,10 +7,10 @@ function App() {
     <>
       <h1 className="principalTitle">Información de la Tienda</h1>
       <div className="principalDiv">
-        <div>
+        <div className='chartsDiv'>
           <SaleChart />
         </div>
-        <div>
+        <div className='chartsDiv'>
           <InventoryChart />
         </div>
       </div>

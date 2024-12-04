@@ -50,3 +50,19 @@
 .principalTitle {
   align-items: center;
 }
+
+.chartsDiv{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.chart-container{
+  height: 400px;
+  width: 600px;
+}
+
+@media (max-width: 800px){
+  .principalDiv{
+    flex-direction: column;
+  }
+}
